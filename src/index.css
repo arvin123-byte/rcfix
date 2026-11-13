@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* ==========================================================
+   RCFIX palette — defined once, used everywhere as Tailwind
+   classes: bg-bg, bg-surface, border-line, text-ink, text-muted,
+   bg-accent, text-trace, font-head, font-mono …
+   ========================================================== */
+@theme {
+  --color-bg: #0b0f14;         /* page background */
+  --color-surface: #121821;    /* cards, header */
+  --color-surface-2: #18212c;  /* raised / hover */
+  --color-line: #243041;       /* borders */
+  --color-ink: #e8edf3;        /* main text */
+  --color-muted: #93a1b3;      /* secondary text */
+  --color-accent: #ffb020;     /* amber: buttons, highlights */
+  --color-accent-2: #ffc75a;   /* amber hover */
+  --color-accent-ink: #1a1200; /* text on amber */
+  --color-trace: #2dd4a7;      /* PCB green: small details */
+
+  --font-head: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+
+  --shadow-card: 0 10px 30px rgb(0 0 0 / 0.35);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-bg text-ink font-body antialiased leading-relaxed;
+  }
+  h1, h2, h3, h4 { @apply font-head tracking-tight text-ink; }
+}
+
+/* Faint PCB grid behind hero sections */
+@utility pcb-grid {
+  background-image:
+    linear-gradient(rgb(45 212 167 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(45 212 167 / 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
